@@ -1,0 +1,12 @@
+#
+# GitPitch Slideshow Custom Settings
+#
+# For details, visit Wiki:
+# https://github.com/gitpitch/gitpitch/wiki/Slideshow-Settings
+#
+theme : sky
+theme-override : assets/css/PITCHME.css
+highlight : hybrid
+transition : none
+published : true
+footnote : Typeclasses in scala
