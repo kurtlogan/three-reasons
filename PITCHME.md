@@ -495,6 +495,22 @@ Either[HttpError, Option[User]]
 ### Example refactoring
 
 ```
+HttpError + (User + 1) 
+```
+
+---
+
+### Example refactoring
+
+```
+HttpError + (User + 1) = HttpError + (1 + User) 
+```
+
+---
+
+### Example refactoring
+
+```
 HttpError + (User + 1) = HttpError + (1 + User) = (HttpError + 1) + User 
 ```
 
