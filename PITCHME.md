@@ -2,8 +2,6 @@
 
 ---
 
-# But first
-
 ```scala
 def updateSet(set: Set[java.net.URL], url: Set[java.net.URL]): Set[java.net.URL] =
   set ++ url
@@ -56,7 +54,7 @@ these are the same laws used for sum and product in number algebra
 ---
 
 ## Cardinality
-   - Number the of inhabitants of a type
+   - Number of inhabitants of a type
    - Type is a set
    - Values are inhabitants
    
@@ -138,10 +136,156 @@ Left(false)
 
 ---
 
-### Laws of sum types
+### Laws: Identity
 
+Right identity
+```
+A + 0 = A
+```
+
+Left identity
+```
+0 + A = A
+```
 
 ---
+
+### Laws: Identity
+
+#### Nothing type
+
+   - Bottom type in scala
+   - Nothing extends Everything
+   - Cardinality is 0
+   - Identity type for Sum types
+   - Doesn't change cardinality
+
+---
+
+### Laws: Identity
+
+```scala
+Either[Nothing, Boolean]
+```
+
+---
+
+### Laws: Identity
+
+```scala
+Either[Nothing, Boolean]
+```
+
+```scala
+def fromEither(either: Either[Nothing, Boolean]): Boolean =
+  either match {
+    case Left(nothing)  => nothing
+    case Right(boolean) => boolean
+  } 
+```
+
+---
+
+### Laws: Identity
+
+```scala
+Either[Nothing, Boolean]
+```
+
+```scala
+def toEither(boolean: Boolean): Either[Nothing, Boolean] =
+  Right(boolean) 
+```
+
+---
+
+### Laws: Associative
+
+```
+A + (B + C) = A + B + C
+```
+
+---
+
+### Laws: Associative
+
+```scala
+Either[Boolean, Either[String, Int]]
+```
+is isomorphic to
+```scala
+Either[Either[Boolean, String], Int]
+```
+
+---
+
+### Laws: Associative
+
+```scala
+def assoc1(either: Either[Boolean, Either[String, Int]]): Either[Either[Boolean, String], Int] =
+  either match {
+  
+    case Left(boolean) => Left(Left(boolean))
+    
+    case Right(either2) => either2 match {
+    
+      case Left(string) => Left(Right(string))
+      
+      case Right(int) => Right(int)
+    }
+  }
+```
+
+---
+
+### Laws: Associative
+
+```scala
+def assoc2(either: Either[Either[Boolean, String], Int]): Either[Boolean, Either[String, Int]] =
+  either match {
+      
+    case Left(either2) => either2 match {
+        
+      case Left(boolean) => Left(boolean)
+        
+      case Right(string) => Right(Left(string))
+    }
+    
+    case Right(int) => Right(Right(int))
+  }
+```
+
+---
+
+### Laws: Commutative
+
+```
+A + B = B + A
+```
+
+---
+
+### Laws: Commutative
+
+```scala
+Either[Boolean, String]
+```
+is isomorphic to
+```scala
+Either[String, Boolean]
+```
+
+---
+
+### Laws: Commutative
+
+```scala
+def swap[A, B](either: Either[A, B]): Either[B, A] =
+  either match {
+    case Left(a)  => Right(a)
+    case Right(b) => Left(b)
+  }
+```
 
 ---
 
