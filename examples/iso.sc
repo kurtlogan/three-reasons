@@ -1,4 +1,19 @@
 
+def toBoolean(tuple: (Boolean, Unit)): Boolean =
+  tuple._1
+
+def toTuple(boolean: Boolean): (Boolean, Unit) =
+  (boolean, ())
+
+def toTuple(triplet: (Boolean, String, Int)): (Boolean, (String, Int)) =
+  (triplet._1, (triplet._2, triplet._3))
+
+def toTriplet(tuple: (Boolean, (String, Int))): (Boolean, String, Int) =
+  (tuple._1, tuple._2._1, tuple._2._2)
+
+def swap[A, B](tuple: (A, B)): (B, A) =
+  (tuple._2, tuple._1)
+
 def fromEither(either: Either[Nothing, Boolean]): Boolean =
   either match {
     case Left(nothing)  => nothing

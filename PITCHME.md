@@ -72,6 +72,197 @@ def swap[A, B](tuple: (A, B)): (B, A) = (tuple._2, tuple._1)
 
 ---
 
+# Product types
+
+---
+
+## Product operations
+
+   - \*
+   - Both, All, Every
+   
+---
+
+## In Scala
+
+```scala
+(String, Int)
+``` 
+
+---
+
+## In Scala
+
+```
+case class Person(name: String, age: Int)
+```
+
+---
+
+### Cardinality of product types
+
+Cardinality of a product type is the product of the cardinality of the composed types
+
+---
+
+### Cardinality of product types
+
+```scala
+(Boolean, Byte)
+```
+
+---
+
+### Cardinality of product types
+
+   - Cardinality of Boolean is 2
+   - Cardinality of Byte is 256
+   - Cardinality of (Boolean, Byte) is 512
+
+---
+
+### Cardinality of product types
+
+```scala
+(true, -128)
+(false, -128)
+(true, -127)
+(false, -127)
+// ...
+(true, 126)
+(false, 126)
+(true, 127)
+(false, 127)
+
+```
+
+---
+
+### Laws: Identity
+
+Right identity
+```
+A * 0 = A
+```
+
+Left identity
+```
+0 * A = A
+```
+
+---
+
+### Laws: Identity
+
+#### Unit type
+
+   - Unit is a type with only 1 inhabitant
+   - You can always construct a Unit value
+   - Unit is the identity type for product types
+
+---
+
+### Laws: Identity
+
+```scala
+(Boolean, Unit)
+```
+
+---
+
+### Laws: Identity
+
+```scala
+(Boolean, Unit)
+```
+
+```scala
+def toBoolean(tuple: (Boolean, Unit)): Boolean =
+  tuple._1
+```
+
+---
+
+### Laws: Identity
+
+```scala
+(Boolean, Unit)
+```
+
+```scala
+def toTuple(boolean: Boolean): (Boolean, Unit) =
+  (boolean, ())
+```
+
+---
+
+### Laws: Associative
+
+```
+A * B * C = A * (B * C)
+```
+
+---
+
+### Laws: Associative
+
+```scala
+(Boolean, String, Int)
+```
+is isomorphic to
+```scala
+(Boolean, (String, Int))
+```
+
+---
+
+### Laws: Associative 
+
+```scala
+def toTuple(triplet: (Boolean, String, Int)): (Boolean, (String, Int)) =
+  (triplet._1, (triplet._2, triplet._3))
+```
+
+---
+
+### Laws: Associative
+
+```scala
+def toTriplet(tuple: (Boolean, (String, Int))): (Boolean, String, Int) =
+  (tuple._1, tuple._2._1, tuple._2._2)
+```
+
+---
+
+### Laws: Commutative
+
+```
+A * B = B * A
+```
+
+---
+
+### Laws: Commutative
+
+```scala
+(Boolean, String)
+```
+is isomorphic to
+```scala
+(String, Boolean)
+```
+
+---
+
+### Laws: Commutative
+
+```scala
+def swap[A, B](tuple: (A, B)): (B, A) =
+  (tuple._2, tuple._1)
+```
+
+---
+
 # Sum types
 
 (Sometimes called co-product)
