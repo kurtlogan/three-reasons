@@ -142,12 +142,12 @@ Cardinality of a product type is the product of the cardinality of the composed 
 
 Right identity
 ```
-A * 0 = A
+A * 1 = A
 ```
 
 Left identity
 ```
-0 * A = A
+1 * A = A
 ```
 
 ---
