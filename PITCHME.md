@@ -40,10 +40,10 @@ they are algebraic because they form an algebra which means they have 3 things
 ---
 
 ## Laws
-   - Identity - `x + 0 = x` | `x * 1 = x`
-   - Associative - `a + b + c = a + (b + c)` | `a * b * c = a * (b * c)`
-   - Commutative - `a + b = b + a` | `a * b = b * a`
-   - Distributive - `(a * b) + (a * c) = a(b + c)`
+   - Identity
+   - Associative
+   - Commutative
+   - Distributive
    
 these are the same laws used for sum and product in number algebra
 
