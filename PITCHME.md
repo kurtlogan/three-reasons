@@ -49,10 +49,6 @@ these are the same laws used for sum and product in number algebra
 
 ---
 
-# But first
-
----
-
 ## Cardinality
    - Number of inhabitants of a type
    - Type is a set
@@ -115,9 +111,9 @@ Cardinality of a product type is the product of the cardinality of the composed 
 
 ### Cardinality of product types
 
-   - Cardinality of Boolean is 2
-   - Cardinality of Byte is 256
-   - Cardinality of (Boolean, Byte) is 512
+   - Cardinality of ```scala Boolean``` is 2
+   - Cardinality of ```scala Byte``` is 256
+   - Cardinality of ```scala (Boolean, Byte)``` is 512
 
 ---
 
@@ -154,7 +150,7 @@ Left identity
 
 ### Laws: Identity
 
-#### Unit type
+### Unit type
 
    - Unit is a type with only 1 inhabitant
    - You can always construct a Unit value
@@ -311,9 +307,9 @@ Either[Boolean, Unit]
 
 ### Cardinality of sum types
 
-   - Cardinality of `Boolean` is 2
-   - Cardinality of `Unit` is 1
-   - Cardinality of `Either[Boolean, Unit]` is 3   
+   - Cardinality of ```scala Boolean``` is 2
+   - Cardinality of ```scala Unit``` is 1
+   - Cardinality of ```scala Either[Boolean, Unit]``` is 3   
 
 ---
 
@@ -343,9 +339,9 @@ Left identity
 
 ### Laws: Identity
 
-#### Nothing type
+### Nothing type
 
-   - Bottom type in scala
+   - Bottom type in Scala
    - Nothing extends Everything
    - Cardinality is 0
    - Identity type for Sum types
@@ -476,6 +472,38 @@ def swap[A, B](either: Either[A, B]): Either[B, A] =
     case Left(a)  => Right(a)
     case Right(b) => Left(b)
   }
+```
+
+---
+
+### Why
+
+   - gives us a way to talk about these things in an abstract way
+   - refactor based on laws
+   - fearless refactoring
+   
+---
+
+### Example refactoring
+
+```scala
+Either[HttpError, Option[User]]
+```
+
+---
+
+### Example refactoring
+
+```
+HttpError + (User + 1) = HttpError + (1 + User) = (HttpError + 1) + User 
+```
+
+---
+
+### Example refactoring
+
+```scala
+Either[Option[HttpError], User]
 ```
 
 ---
