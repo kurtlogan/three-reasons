@@ -1,5 +1,7 @@
 import scala.util.Try
 
+val f2: Function[Int, String]
+
 def divide1(a: Int, b: Int): Int = a / b
 
 def parseInt1(s: String): Int = s.toInt

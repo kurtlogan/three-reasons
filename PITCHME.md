@@ -555,19 +555,17 @@ Methods are part of a class and have a name and signature
 
 ---
 
-Math functions
+## Math functions
 
-   - pure functions are like math functions
-   - can accept multiple arguments
-   - mapping from set __A__ to set __B__
+   - Pure functions are like math functions
+   - Can accept multiple arguments
+   - Mapping from set __A__ to set __B__
    - __EVERY__ __A__ in __A__ maps to __1__ element in __B__ 
 
 ---
 
 ## Properties
 
-Pure functions satisfy 3 properties
-   
    - Total
    - Deterministic
    - Free from side effects
@@ -628,7 +626,7 @@ def parseInt2(s: String): Option[Int] =
 
 ## Determinism
 
-   - Each input has the same output
+   - Every input has the same output
    - Easy to test
 
 ---
@@ -711,8 +709,8 @@ def welcomeMsg2[A](println: String => A, combine: (A, A) => A): A =
 ## No side effects
 
    - Caller determines how to interpret
-   - Super easy to test
    - Very flexible
+   - Super easy to test
    
 ---
 
@@ -720,7 +718,7 @@ def welcomeMsg2[A](println: String => A, combine: (A, A) => A): A =
 
    - Property of pure functional programming
    - Enables equational reasoning
-   - Can substitute function call with implementation
+   - Can substitute function call or value with implementation
    - Doesn't change meaning of program
 
 ---
