@@ -526,6 +526,250 @@ Either[Option[HttpError], User]
 
 #Equational reasoning
 
+---
+
+## Pure Functions
+
+---
+
+### Functions in Scala
+
+```scala
+val f1: Int => String
+val f2: Function[Int, String]
+```
+
+Functions in Scala are complete objects and can be assigned to variables 
+
+### Methods in Scala
+
+```scala
+trait A {
+  def m(i: Int): String
+}
+```
+
+Methods are part of a class and have a name and signature
+
+---
+
+Math functions
+
+   - pure functions are like math functions
+   - can accept multiple arguments
+   - mapping from set ```scala A``` to set ```scala B```
+   - __EVERY__ ```scala A``` in ```scala A``` maps to __1__ element in ```scala B``` 
+
+---
+
+## Properties
+
+pure functions satisfy 3 properties
+   
+   - Total
+   - Deterministic
+   - Free from side effects
+
+if your function doesn't satisfy these properties you are not doing function programming
+
+---
+
+## Totality
+
+   - every input must have a valid output
+   - easy to reason about
+   - return types don't lie
+
+---
+
+## Examples - Non-total
+
+```scala
+def divide1(a: Int, b: Int): Int = a / b
+```
+
+```scala
+def parseInt1(s: String): Int = s.toInt
+```
+
+---
+
+## Examples - Total
+
+```scala
+def divide2(a: Int, b: Int): Either[Exception, Int] =
+  if(b == 0) Left(new ArithmeticException("Divide by zero"))
+  else Right(a / b)
+```
+
+---
+
+## Examples - Total
+
+```scala
+import scala.util.Try
+
+def parseInt2(s: String): Option[Int] =
+  Try(s.toInt).toOption
+```
+
+---
+
+## Totality
+
+   - we have expanded the output to incorporate the effect
+   - effects like exceptional behaviour or nullability
+   - enforces we handle effect
+   - makes intent explicit
+
+---
+
+## Determinism
+
+   - each input has the same output
+   - easy to test
+
+---
+
+## Examples - Non-Deterministic
+
+```scala
+def random1(): Int = scala.util.Random.nextInt
+```
+
+```scala
+import java.time.LocalDateTime
+def inAnHour1(): LocalDateTime = LocalDateTime.now.plusHours(1)
+```
+
+---
+
+## Examples - Deterministic
+
+```scala
+def random2(seed: Int): Int =
+  ((seed * seed) * 0xb5ad4eceda1ce2a9L).toInt
+```
+
+---
+
+## Examples - Deterministic
+
+```scala
+import java.time.LocalDateTime
+def inAnHour2(now: LocalDateTime): LocalDateTime = now.plusHours(1)
+```
+
+---
+
+## Determinism
+
+   - Provide seed values that determine result
+   - Same output for input
+   - Super easy to test
+
+---
+
+## No side effects
+
+   - function only evaluates output
+   - if it doesn't affect the output it's a side effect
+   - easy to refactor
+   - invert control to the caller
+
+---
+
+## Example - Side effecting code
+
+```scala
+def welcomeMsg(): Unit = {
+    println("Welcome to the help page!")
+    println("To list commands, type `commands`.")
+    println("For help on a command, type `help <command>`")
+    println("To exit the help page, type `exit`.")
+}
+```
+
+---
+
+## Example - No Side effects
+
+```scala
+def welcomeMsg2[A](println: String => A, combine: (A, A) => A): A =
+  List(
+    println("Welcome to the help page!"),
+    println("To list commands, type `commands`."),
+    println("For help on a command, type `help <command>`"),
+    println("To exit the help page, type `exit`.")
+  ).reduce(combine)
+```
+
+---
+
+## No side effects
+
+   - Caller determines how to interpret
+   - Super easy to test
+   - Very flexible
+   
+---
+
+## Referential transparency
+
+   - property of pure functional programming
+   - enables equational reasoning
+   - can substitute function call with implementation
+   - doesn't change meaning of program
+
+---
+
+## Examples - Referentially transparent
+
+```scala
+val one = 1
+(one, one)
+```
+evaluates to
+```scala
+(1, 1)
+```
+
+---
+
+## Examples - Referentially opaque
+
+```scala
+val doPrint = println("one")
+(doPrint, doPrint)
+```
+evaluates to
+```scala
+// Console: one
+((), ())
+```
+
+---
+
+## Examples - Referentially opaque
+
+```scala
+(println("one"), println("one"))
+```
+evaluates to
+```scala
+// Console: one
+// Console: one
+
+((), ())
+```
+
+---
+
+## Referentially transparent
+
+   - makes refactoring easy
+   - you can __always__ inline functions and values
+   - easy to reason about
 
 ---
 
