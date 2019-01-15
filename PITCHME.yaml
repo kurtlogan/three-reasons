@@ -9,4 +9,4 @@ theme-override : assets/css/PITCHME.css
 highlight : hybrid
 transition : none
 published : true
-footnote : Typeclasses in scala
+footnote : Three reasons to love FP
