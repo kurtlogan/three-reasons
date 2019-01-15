@@ -17,12 +17,12 @@ def updateSet(set: Set[java.net.URL], url: Set[java.net.URL]): Set[java.net.URL]
 
 ---
 
-algebraic data types are types composed from other types
+Algebraic data types are types composed from other types
 
-they are algebraic because they form an algebra which means they have 3 things 
-   - data types
-   - operations
-   - laws
+They are algebraic because they form an algebra which means they have 3 things 
+   - Data types
+   - Operations
+   - Laws
    
 ---
 
@@ -45,7 +45,7 @@ they are algebraic because they form an algebra which means they have 3 things
    - Commutative
    - Distributive
    
-these are the same laws used for sum and product in number algebra
+These are the same laws used for sum and product in number algebra
 
 ---
 
@@ -111,9 +111,9 @@ Cardinality of a product type is the product of the cardinality of the composed 
 
 ### Cardinality of product types
 
-   - Cardinality of ```scala Boolean``` is 2
-   - Cardinality of ```scala Byte``` is 256
-   - Cardinality of ```scala (Boolean, Byte)``` is 512
+   - Cardinality of __Boolean__ is 2
+   - Cardinality of __Byte__ is 256
+   - Cardinality of __(Boolean, Byte)__ is 512
 
 ---
 
@@ -307,9 +307,9 @@ Either[Boolean, Unit]
 
 ### Cardinality of sum types
 
-   - Cardinality of ```scala Boolean``` is 2
-   - Cardinality of ```scala Unit``` is 1
-   - Cardinality of ```scala Either[Boolean, Unit]``` is 3   
+   - Cardinality of __Boolean__ is 2
+   - Cardinality of __Unit__ is 1
+   - Cardinality of __Either[Boolean, Unit]__ is 3   
 
 ---
 
@@ -557,28 +557,28 @@ Math functions
 
    - pure functions are like math functions
    - can accept multiple arguments
-   - mapping from set ```scala A``` to set ```scala B```
-   - __EVERY__ ```scala A``` in ```scala A``` maps to __1__ element in ```scala B``` 
+   - mapping from set __A__ to set __B__
+   - __EVERY__ __A__ in __A__ maps to __1__ element in __B__ 
 
 ---
 
 ## Properties
 
-pure functions satisfy 3 properties
+Pure functions satisfy 3 properties
    
    - Total
    - Deterministic
    - Free from side effects
 
-if your function doesn't satisfy these properties you are not doing function programming
+If your function doesn't satisfy these properties you are not doing function programming
 
 ---
 
 ## Totality
 
-   - every input must have a valid output
-   - easy to reason about
-   - return types don't lie
+   - Every input must have a valid output
+   - Easy to reason about
+   - Return types don't lie
 
 ---
 
@@ -617,17 +617,17 @@ def parseInt2(s: String): Option[Int] =
 
 ## Totality
 
-   - we have expanded the output to incorporate the effect
-   - effects like exceptional behaviour or nullability
-   - enforces we handle effect
-   - makes intent explicit
+   - We have expanded the output to incorporate the effect
+   - Effects like exceptional behaviour or nullability
+   - Enforces we handle effect
+   - Makes intent explicit
 
 ---
 
 ## Determinism
 
-   - each input has the same output
-   - easy to test
+   - Each input has the same output
+   - Easy to test
 
 ---
 
@@ -672,10 +672,10 @@ def inAnHour2(now: LocalDateTime): LocalDateTime = now.plusHours(1)
 
 ## No side effects
 
-   - function only evaluates output
-   - if it doesn't affect the output it's a side effect
-   - easy to refactor
-   - invert control to the caller
+   - Function only evaluates output
+   - If it doesn't affect the output it's a side effect
+   - Easy to refactor
+   - Invert control to the caller
 
 ---
 
@@ -716,10 +716,10 @@ def welcomeMsg2[A](println: String => A, combine: (A, A) => A): A =
 
 ## Referential transparency
 
-   - property of pure functional programming
-   - enables equational reasoning
-   - can substitute function call with implementation
-   - doesn't change meaning of program
+   - Property of pure functional programming
+   - Enables equational reasoning
+   - Can substitute function call with implementation
+   - Doesn't change meaning of program
 
 ---
 
@@ -767,10 +767,10 @@ evaluates to
 
 ## Referentially transparent
 
-   - makes refactoring easy
-   - you can __always__ inline functions and values
-   - easy to reason about
+   - Makes refactoring easy
+   - You can __always__ inline functions and values
+   - Easy to reason about
 
 ---
 
-#Type based reasoning
+# Type based reasoning
