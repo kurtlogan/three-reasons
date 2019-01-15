@@ -541,6 +541,8 @@ val f2: Function[Int, String]
 
 Functions in Scala are complete objects and can be assigned to variables 
 
+---
+
 ### Methods in Scala
 
 ```scala
