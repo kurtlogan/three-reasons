@@ -524,7 +524,7 @@ Either[Option[HttpError], User]
 
 ---
 
-#Equational reasoning
+# Equational reasoning
 
 ---
 
