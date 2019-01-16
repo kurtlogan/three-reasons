@@ -634,6 +634,7 @@ def parseInt2(s: String): Option[Int] =
 ## Determinism
 
    - Every input has the same output
+   - Memoizable
    - Easy to test
 
 ---
