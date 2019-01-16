@@ -704,13 +704,15 @@ def welcomeMsg1(): Unit = {
 ## Example - No Side effects
 
 ```scala
-def welcomeMsg2[A](println: String => A, combine: (A, A) => A): A =
-  List(
-    println("Welcome to the help page!"),
-    println("To list commands, type `commands`."),
-    println("For help on a command, type `help <command>`"),
-    println("To exit the help page, type `exit`.")
-  ).reduce(combine)
+def welcomeMsg2[A](
+  println: String => A,
+  combine: (A, A) => A): A =
+List(
+  println("Welcome to the help page!"),
+  println("To list commands, type `commands`."),
+  println("For help on a command, type `help <command>`"),
+  println("To exit the help page, type `exit`.")
+).reduce(combine)
 ```
 
 ---
