@@ -881,7 +881,8 @@ def flatMap1[A, B](fa: Option[A], f: A => Option[B])
 
 ---
 
-## Real world example - incorrect implementation
+## Real world example
+### Incorrect implementation
 
 ```scala
 def flatMap2[A, B](fa: Option[A], f: A => Option[B])
@@ -890,7 +891,8 @@ def flatMap2[A, B](fa: Option[A], f: A => Option[B])
 
 ---
 
-## Real world example - correct implementation
+## Real world example
+### Correct implementation
 
 ```scala
 def flatMap3[A, B](fa: Option[A], f: A => Option[B])
@@ -903,7 +905,8 @@ fa match {
 
 ---
 
-## Real world example - monomorphic
+## Real world example
+### Monomorphic
 
 ```scala
 def flatMap4(fa: Option[Int], f: Int => Option[String])
