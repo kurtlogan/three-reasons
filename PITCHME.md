@@ -691,7 +691,7 @@ def inAnHour2(now: LocalDateTime): LocalDateTime =
 ## Example - Side effecting code
 
 ```scala
-def welcomeMsg(): Unit = {
+def welcomeMsg1(): Unit = {
     println("Welcome to the help page!")
     println("To list commands, type `commands`.")
     println("For help on a command, type `help <command>`")
