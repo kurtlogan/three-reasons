@@ -518,7 +518,6 @@ HttpError + (User + 1) = HttpError + (1 + User)
 ```
 HttpError + (User + 1) =
 HttpError + (1 + User) =
-
 (HttpError + 1) + User 
 ```
 
