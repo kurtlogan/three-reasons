@@ -864,7 +864,7 @@ def function1[A](value: A): A = ???
 
 ---
 
-## Example - monomorphic code
+## Example - polymorphic code
 
 ```scala
 def function2[A](value: A): A = value
@@ -875,7 +875,8 @@ def function2[A](value: A): A = value
 ## Real world example
 
 ```scala
-def flatMap1[A, B](fa: Option[A], f: A => Option[B]): Option[B] = ???
+def flatMap1[A, B](fa: Option[A], f: A => Option[B])
+  : Option[B] = ???
 ```
 
 ---
@@ -883,7 +884,8 @@ def flatMap1[A, B](fa: Option[A], f: A => Option[B]): Option[B] = ???
 ## Real world example - incorrect implementation
 
 ```scala
-def flatMap2[A, B](fa: Option[A], f: A => Option[B]): Option[B] = None
+def flatMap2[A, B](fa: Option[A], f: A => Option[B])
+  : Option[B] = None
 ```
 
 ---
@@ -891,7 +893,9 @@ def flatMap2[A, B](fa: Option[A], f: A => Option[B]): Option[B] = None
 ## Real world example - correct implementation
 
 ```scala
-def flatMap3[A, B](fa: Option[A], f: A => Option[B]): Option[B] = fa match {
+def flatMap3[A, B](fa: Option[A], f: A => Option[B])
+  : Option[B] =
+fa match {
   case Some(value) => f(value)
   case None        => None
 }
@@ -902,7 +906,8 @@ def flatMap3[A, B](fa: Option[A], f: A => Option[B]): Option[B] = fa match {
 ## Real world example - monomorphic
 
 ```scala
-def flatMap4(fa: Option[Int], f: Int => Option[String]): Option[String] = ???
+def flatMap4(fa: Option[Int], f: Int => Option[String])
+  : Option[String] = ???
 ```
 
 ---
