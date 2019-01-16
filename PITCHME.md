@@ -218,7 +218,7 @@ is isomorphic to
 ```scala
 def toTuple(triplet: (Boolean, String, Int))
   : (Boolean, (String, Int)) =
-    (triplet._1, (triplet._2, triplet._3))
+(triplet._1, (triplet._2, triplet._3))
 ```
 
 ---
@@ -228,7 +228,7 @@ def toTuple(triplet: (Boolean, String, Int))
 ```scala
 def toTriplet(tuple: (Boolean, (String, Int)))
   : (Boolean, String, Int) =
-    (tuple._1, tuple._2._1, tuple._2._2)
+(tuple._1, tuple._2._1, tuple._2._2)
 ```
 
 ---
