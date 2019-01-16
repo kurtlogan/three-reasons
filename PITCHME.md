@@ -483,9 +483,9 @@ def swap[A, B](either: Either[A, B]): Either[B, A] =
 
 ### Why
 
-   - gives us a way to talk about these things in an abstract way
-   - refactor based on laws
-   - fearless refactoring
+   - Gives us a way to talk about these things in an abstract way
+   - Refactor based on laws
+   - Fearless refactoring
    
 ---
 
@@ -516,7 +516,10 @@ HttpError + (User + 1) = HttpError + (1 + User)
 ### Example refactoring
 
 ```
-HttpError + (User + 1) = HttpError + (1 + User) = (HttpError + 1) + User 
+HttpError + (User + 1) =
+HttpError + (1 + User) =
+
+(HttpError + 1) + User 
 ```
 
 ---
