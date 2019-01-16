@@ -665,7 +665,8 @@ def random2(seed: Int): Int =
 
 ```scala
 import java.time.LocalDateTime
-def inAnHour2(now: LocalDateTime): LocalDateTime = now.plusHours(1)
+def inAnHour2(now: LocalDateTime): LocalDateTime =
+  now.plusHours(1)
 ```
 
 ---
