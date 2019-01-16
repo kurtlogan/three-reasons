@@ -3,7 +3,8 @@
 ---
 
 ```scala
-def updateSet(set: Set[java.net.URL], url: Set[java.net.URL]): Set[java.net.URL] =
+import java.net.URL
+def updateSet(set: Set[URL], url: Set[URL]): Set[URL] =
   set ++ url
 ```
 
@@ -774,3 +775,181 @@ evaluates to
 ---
 
 # Type based reasoning
+
+---
+
+## Polymorphic functions
+
+   - Means many forms
+   - Parameterised over some generic type
+   - Not possible in scala
+   - Can use polymorphic methods
+   
+---
+
+## Monomorphic code
+
+   - Code has only one form
+   - Implementation is not constrained
+   - Numerous ways to implement type signature
+   - Numerous incorrect implementations
+   
+---
+
+## Polymorphic code
+
+   - Enables code reuse
+   - Constrains the implementation
+   - Few ways to implement type signature
+   - Fewer ways to implement incorrectly
+   - Greater reasoning capabilities
+   
+---
+
+## Example - monomorphic code
+
+```scala
+def mutateString1(s: String): String = ???
+``` 
+   
+---
+
+## Example - monomorphic code
+
+```scala
+def mutateString2(s: String): String = s
+```
+
+---
+
+## Example - monomorphic code
+ 
+```scala
+def mutateString3(s: String): String = s.toLowerCase
+```
+
+---
+
+## Example - monomorphic code
+
+```scala
+def mutateString4(s: String): String = "Hello world"
+```
+
+---
+
+## Example - monomorphic code
+
+```scala
+def mutateString5(s: String): String = s.reverse
+```
+
+---
+
+## Example - polymorphic code
+
+```scala
+def function1[A](value: A): A = ???
+```
+
+---
+
+## Example - monomorphic code
+
+```scala
+def function2[A](value: A): A = value
+```
+
+---
+
+## Real world example
+
+```scala
+def flatMap1[A, B](fa: Option[A], f: A => Option[B]): Option[B] = ???
+```
+
+---
+
+## Real world example - incorrect implementation
+
+```scala
+def flatMap2[A, B](fa: Option[A], f: A => Option[B]): Option[B] = None
+```
+
+---
+
+## Real world example - correct implementation
+
+```scala
+def flatMap3[A, B](fa: Option[A], f: A => Option[B]): Option[B] = fa match {
+  case Some(value) => f(value)
+  case None        => None
+}
+```
+
+---
+
+## Real world example - monomorphic
+
+```scala
+def flatMap4(fa: Option[Int], f: Int => Option[String]): Option[String] = ???
+```
+
+---
+
+# Adding behaviour
+
+---
+
+## Typeclasses
+
+Data types with operations on those types and laws governing the operations
+
+   - Ad-hoc polymorphism
+   - Interface that defines some behaviour
+   - Add behaviour to polymorphic functions
+   - Eq, Ord, Show, Semigroup
+   
+---
+
+## Monad typeclass
+
+```scala
+trait Monad[F[_]] {
+  
+  def pure[A](value: A): F[A]
+  
+  def flatMap[A, B](fa: F[A], f: A => F[B]): F[B]
+  
+  def map[A, B](fa: F[A], f: A => B): F[B] =
+    flatMap(fa, (a: A) => pure(f(a)))
+}
+```
+
+---
+
+## Implement zip in terms of Monad
+
+```scala
+def zip1[F[_]: Monad, A, B](fa: F[A], fb: F[B]): F[(A, B)] = ???
+```
+
+---
+
+## Implement zip in terms of Monad
+
+```scala
+def zip2[F[_]: Monad, A, B](fa: F[A], fb: F[B]): F[(A, B)] =
+  fa.flatMap(a => fb.map(b => (a, b)))
+```
+
+---
+
+## In Summary
+
+Functional programming gives us very powerful ways to reason about our code
+
+   - Algebraic reasoning
+   - Equational reasoning
+   - type based reasoning  
+
