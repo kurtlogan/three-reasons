@@ -14,7 +14,7 @@ def updateSet(set: Set[URL], url: Set[URL]): Set[URL] =
 
 ---
 
-# Algebraic data types (ADTs)
+# Algebraic data types (ADT)
 
 ---
 
@@ -216,8 +216,9 @@ is isomorphic to
 ### Laws: Associative 
 
 ```scala
-def toTuple(triplet: (Boolean, String, Int)): (Boolean, (String, Int)) =
-  (triplet._1, (triplet._2, triplet._3))
+def toTuple(triplet: (Boolean, String, Int))
+  : (Boolean, (String, Int)) =
+    (triplet._1, (triplet._2, triplet._3))
 ```
 
 ---
@@ -225,8 +226,9 @@ def toTuple(triplet: (Boolean, String, Int)): (Boolean, (String, Int)) =
 ### Laws: Associative
 
 ```scala
-def toTriplet(tuple: (Boolean, (String, Int))): (Boolean, String, Int) =
-  (tuple._1, tuple._2._1, tuple._2._2)
+def toTriplet(tuple: (Boolean, (String, Int)))
+  : (Boolean, String, Int) =
+    (tuple._1, tuple._2._1, tuple._2._2)
 ```
 
 ---
@@ -262,7 +264,7 @@ def swap[A, B](tuple: (A, B)): (B, A) =
 
 # Sum types
 
-(Sometimes called co-product)
+(Sometimes called coproduct)
 
 ---
 
