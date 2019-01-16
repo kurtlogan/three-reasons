@@ -535,7 +535,7 @@ Either[Option[HttpError], User]
 
 ---
 
-## Pure Functions
+# Pure Functions
 
 ---
 
@@ -553,7 +553,7 @@ Functions in Scala are complete objects and can be assigned to variables
 ### Methods in Scala
 
 ```scala
-trait A {
+class A {
   def m(i: Int): String
 }
 ```
