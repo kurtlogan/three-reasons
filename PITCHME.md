@@ -412,18 +412,19 @@ Either[Either[Boolean, String], Int]
 ### Laws: Associative
 
 ```scala
-def assoc1(either: Either[Boolean, Either[String, Int]]): Either[Either[Boolean, String], Int] =
-  either match {
+def assoc1(either: Either[Boolean, Either[String, Int]])
+  : Either[Either[Boolean, String], Int] =
+either match {
   
-    case Left(boolean) => Left(Left(boolean))
+  case Left(boolean) => Left(Left(boolean))
     
-    case Right(either2) => either2 match {
+  case Right(either2) => either2 match {
     
-      case Left(string) => Left(Right(string))
+    case Left(string) => Left(Right(string))
       
-      case Right(int) => Right(int)
-    }
+    case Right(int) => Right(int)
   }
+}
 ```
 
 ---
@@ -431,18 +432,19 @@ def assoc1(either: Either[Boolean, Either[String, Int]]): Either[Either[Boolean,
 ### Laws: Associative
 
 ```scala
-def assoc2(either: Either[Either[Boolean, String], Int]): Either[Boolean, Either[String, Int]] =
-  either match {
+def assoc2(either: Either[Either[Boolean, String], Int])
+  : Either[Boolean, Either[String, Int]] =
+either match {
       
-    case Left(either2) => either2 match {
+  case Left(either2) => either2 match {
         
-      case Left(boolean) => Left(boolean)
+    case Left(boolean) => Left(boolean)
         
-      case Right(string) => Right(Left(string))
-    }
-    
-    case Right(int) => Right(Right(int))
+    case Right(string) => Right(Left(string))
   }
+    
+  case Right(int) => Right(Right(int))
+}
 ```
 
 ---
