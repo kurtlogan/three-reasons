@@ -795,7 +795,7 @@ evaluates to
    - No runtime type reflection
    - No nulls
    - No exceptions
-   - scalafix conf enfores
+   - scalafix conf enforces
 
 ---
 
