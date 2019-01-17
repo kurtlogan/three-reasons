@@ -788,6 +788,17 @@ evaluates to
 
 ---
 
+## Scalazzi subset
+
+   - Subset of scala
+   - No java.lang.Object methods
+   - No runtime type reflection
+   - No nulls
+   - No exceptions
+   - scalafix conf enfores
+
+---
+
 ## Polymorphic functions
 
    - Means many forms
@@ -971,3 +982,6 @@ Functional programming gives us very powerful ways to reason about our code
    - Equational reasoning
    - type based reasoning  
 
+---
+
+Questions
