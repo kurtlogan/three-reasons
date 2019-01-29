@@ -18,8 +18,10 @@ def random1(): Int = scala.util.Random.nextInt
 import java.time.LocalDateTime
 def inAnHour1(): LocalDateTime = LocalDateTime.now.plusHours(1)
 
-def random2(seed: Int): Int =
-  ((seed * seed) * 0xb5ad4eceda1ce2a9L).toInt
+def random2(seed: Int): (Int, Int) = {
+  val r = ((seed * seed) * 0xb5ad4eceda1ce2a9L).toInt
+  (r, r)
+}
 
 import java.time.LocalDateTime
 def inAnHour2(now: LocalDateTime): LocalDateTime = now.plusHours(1)

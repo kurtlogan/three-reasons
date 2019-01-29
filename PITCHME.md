@@ -483,6 +483,8 @@ def swap[A, B](either: Either[A, B]): Either[B, A] =
 
 ### Why
 
+   - Very powerful
+   - Better express domain logic
    - Gives us a way to talk about these things in an abstract way
    - Refactor based on laws
    - Fearless refactoring
@@ -577,7 +579,7 @@ Methods are part of a class and have a name and signature
    - Deterministic
    - Free from side effects
 
-If your function doesn't satisfy these properties you are not doing function programming
+If your function doesn't satisfy these properties you are not doing functional programming
 
 ---
 
@@ -655,8 +657,10 @@ def inAnHour1(): LocalDateTime = LocalDateTime.now.plusHours(1)
 ## Examples - Deterministic
 
 ```scala
-def random2(seed: Int): Int =
-  ((seed * seed) * 0xb5ad4eceda1ce2a9L).toInt
+def random2(seed: Int): (Int, Int) = {
+  val r = ((seed * seed) * 0xb5ad4eceda1ce2a9L).toInt
+  (r, r)
+}
 ```
 
 ---
@@ -857,6 +861,7 @@ def append[A](list: List[A], x: A): List[A] = list match {
 ```scala
 append(List(1, 2, 3), 4)
 1 :: append(List(2, 3), 4)
+1 :: 2 :: append(List(3), 4)
 1 :: 2 :: 3 :: append(List(), 4)
 ```
 
@@ -875,6 +880,7 @@ def append[A](list: List[A], x: A): List[A] = list match {
 ```scala
 append(List(1, 2, 3), 4)
 1 :: append(List(2, 3), 4)
+1 :: 2 :: append(List(3), 4)
 1 :: 2 :: 3 :: append(List(), 4)
 1 :: 2 :: 3 :: 4 :: Nil
 ```
