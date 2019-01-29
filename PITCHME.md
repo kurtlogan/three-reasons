@@ -877,6 +877,7 @@ def append[A](list: List[A], x: A): List[A] = list match {
 }
 ```
 
+
 ```scala
 append(List(1, 2, 3), 4)
 1 :: append(List(2, 3), 4)
