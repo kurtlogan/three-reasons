@@ -2,14 +2,6 @@
 
 ---
 
-```scala
-import java.net.URL
-def updateSet(set: Set[URL], url: Set[URL]): Set[URL] =
-  set ++ url
-```
-
----
-
 # Algebraic reasoning
 
 ---
