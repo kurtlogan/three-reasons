@@ -1079,4 +1079,4 @@ Functional programming gives us very powerful ways to reason about our code
 
 ---
 
-Questions
+# Questions
