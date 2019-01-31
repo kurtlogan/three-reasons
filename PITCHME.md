@@ -1075,7 +1075,7 @@ Functional programming gives us very powerful ways to reason about our code
 
    - Algebraic reasoning
    - Equational reasoning
-   - type based reasoning  
+   - Type based reasoning  
 
 ---
 
