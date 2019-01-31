@@ -44,8 +44,9 @@ These are the same laws used for sum and product in number algebra
 
 ## Cardinality
    - Number of inhabitants of a type
-   - Type is a set
-   - Values are inhabitants
+   - e.g Boolean cardinality is 2
+   - e.g Unit cardinality is 1
+   - e.g String cardinality is ∞
    
 ---
 
@@ -560,7 +561,7 @@ Methods are part of a class and have a name and signature
 
    - Pure functions are like math functions
    - Can accept multiple arguments
-   - Mapping from set __A__ to set __B__
+   - Mapping from type __A__ to type __B__
    - __EVERY__ __A__ in __A__ maps to __1__ element in __B__ 
 
 ---
