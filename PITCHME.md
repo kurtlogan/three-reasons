@@ -733,12 +733,31 @@ List(
 ## Examples - Referentially transparent
 
 ```scala
-val one = 1
-(one, one)
+val some = Some("one")
+
+for {
+  s1 <- some
+  s2 <- some
+} yield (s1, s2)
 ```
 evaluates to
 ```scala
-(1, 1)
+Some(("one", "one"))
+```
+
+---
+
+## Examples - Referentially transparent
+
+```scala
+for {
+  s1 <- Some("one")
+  s2 <- Some("one")
+} yield (s1, s2)
+```
+evaluates to
+```scala
+Some(("one", "one"))
 ```
 
 ---
@@ -746,14 +765,18 @@ evaluates to
 ## Examples - Referentially opaque
 
 ```scala
-val doPrint = println("one")
-(doPrint, doPrint)
+val future = Future { println("one") }
+
+for {
+  f1 <- future
+  f2 <- future
+} yield (f1, f2)
 ```
 evaluates to
 ```scala
 // Console: one
 
-((), ())
+Future(((), ()))
 ```
 
 ---
@@ -761,14 +784,17 @@ evaluates to
 ## Examples - Referentially opaque
 
 ```scala
-(println("one"), println("one"))
+for {
+  f1 <- Future { println("one") }
+  f2 <- Future { println("one") }
+} yield (f1, f2)
 ```
 evaluates to
 ```scala
 // Console: one
 // Console: one
 
-((), ())
+Future(((), ()))
 ```
 
 ---
